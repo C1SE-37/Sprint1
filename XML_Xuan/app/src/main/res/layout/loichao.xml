@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A1C4FD"
+    android:orientation="vertical"
+    tools:context=".LoiChao">
+
+    <TextView
+        android:id="@+id/onclinic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="243dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="top"
+        android:text="OnClinic"
+        android:textColor="#FFFFFF"
+        android:textSize="42sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="69dp"
+        android:fontFamily="@font/dancing_script_bold"
+        android:text="Xin chào bạn!"
+        android:textSize="28sp" />
+
+    <ImageView
+        android:id="@+id/imgbacsi"
+        android:layout_width="wrap_content"
+        android:layout_height="427dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="131dp"
+        app:srcCompat="@drawable/bacsi" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#6490E4"
+        android:text="Đăng Nhập"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#6490E4"
+        android:text="Đăng Ký"
+        app:cornerRadius="20dp"
+        android:textAllCaps="false"/>
+
+
+</RelativeLayout>
+
