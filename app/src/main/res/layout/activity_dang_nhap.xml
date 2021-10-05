@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A1C4FD"
+    android:orientation="vertical"
+    tools:context=".DangNhap">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dancing_script_bold"
+        android:gravity="center"
+        android:text="Chào bạn quay trở lại"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtEmailSoDienThoai"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_edittext"
+        android:ems="10"
+        android:hint="    Email hoặc số điện thoại"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edtMatKhau"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_edittext"
+        android:ems="10"
+        android:hint="    Mật khẩu"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
+
+    <RadioButton
+        android:id="@+id/rdbtnGhiNhoMatKhau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:minHeight="48dp"
+        android:text="Ghi nhớ mật khẩu" />
+
+    <Button
+        android:id="@+id/btnDangNhap"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_edittext1"
+        android:backgroundTint="#6490E4"
+        android:text="Đăng Nhập"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
+
+    <TextView
+        android:id="@+id/tvQuenMatKhau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Quên Mật Khẩu?"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/tvDangKy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Bạn Chưa có tài Khoản? Đăng Ký"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
