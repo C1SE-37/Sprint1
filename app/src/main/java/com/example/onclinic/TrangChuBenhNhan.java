@@ -14,7 +14,5 @@ public class TrangChuBenhNhan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu_benh_nhan);
-
-
     }
 }
