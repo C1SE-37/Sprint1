@@ -22,14 +22,17 @@
         <entry key="app/src/main/res/drawable/custom_corner.xml" value="0.22666666666666666" />
         <entry key="app/src/main/res/drawable/custom_edittext(hong).xml" value="0.22666666666666666" />
         <entry key="app/src/main/res/drawable/custom_edittext.xml" value="0.26851851851851855" />
+        <entry key="app/src/main/res/drawable/custom_spinner.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/drawable/roundedbutton.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_dang_ki.xml" value="0.3833513746219011" />
         <entry key="app/src/main/res/layout/activity_dang_ky.xml" value="0.2140625" />
+        <entry key="app/src/main/res/layout/activity_dang_nhap.xml" value="0.2907692307692308" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2504528985507246" />
         <entry key="app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.2759259259259259" />
         <entry key="app/src/main/res/layout/activity_quen_mat_khau2.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_quen_mat_khau3.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_trang_chu_bac_si.xml" value="0.2907692307692308" />
         <entry key="app/src/main/res/layout/activity_trang_chu_benh_nhan.xml" value="0.21443803858855295" />
         <entry key="app/src/main/res/layout/loichao.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/thanh_phan.xml" value="0.3098958333333333" />

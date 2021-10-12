@@ -94,4 +94,40 @@
         <item>Quận Sơn Trà</item>
         <item>Quận Thanh Khê</item>
     </string-array>
+    <string-array name ="quanBaRiaVungTau">
+        <item>Thành phố Hà Giang</item>
+        <item>Huyện Đồng Văn</item>
+        <item>Huyện Mèo Vạc</item>
+        <item>Huyện Yên Minh</item>
+        <item>Huyện Quản Bạ</item>
+        <item>Huyện Vị Xuyên</item>
+        <item>Huyện Bắc Mê</item>
+        <item>Huyện Hoàng Su Phì</item>
+        <item>Huyện Xín Mần</item>
+        <item>Huyện Bắc Quang</item>
+        <item>Huyện Quang Bình</item>
+    </string-array>
+    <string-array name="quanBacGiang">
+        <item>Thành phố Bắc Giang</item>
+        <item>Huyện Yên Thế</item>
+        <item>Huyện Tân Yên</item>
+        <item>Huyện Lạng Giang</item>
+        <item>Huyện Lục Nam</item>
+        <item>Huyện Lục Ngạn</item>
+        <item>Huyện Sơn Động</item>
+        <item>Huyện Yên Dũng</item>
+        <item>Huyện Việt Yên</item>
+        <item>Huyện Hiệp Hòa</item>
+    </string-array>
+    <string-array name= "quanTTHue">
+        <item>Thành phố Huế</item>
+        <item>Huyện Phong Điền</item>
+        <item>Huyện Quảng Điền</item>
+        <item>Huyện Phú Vang</item>
+        <item>Thị xã Hương Thủy</item>
+        <item>Thị xã Hương Trà</item>
+        <item>Huyện A Lưới</item>
+        <item>Huyện Phú Lộc</item>
+        <item>Huyện Nam Đông</item>
+    </string-array>
 </resources>

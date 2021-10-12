@@ -2,95 +2,112 @@ package com.example.onclinic;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
+
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.model.NguoiDung;
-import com.example.model.TaiKhoan;
-import com.example.sqlhelper.CheckData;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class DangKy extends AppCompatActivity {
 
-    EditText txtEmailSDT, txtTen, txtMatKhau, txtNhapLaiMK;
-    RadioButton rdoKhachHang,rdoPhongKham;
-    Button btnDangKy;
+    private EditText edtEmailHoacSdt, edtTen,edtMatKhau1, edtMatKhau2,edtNgay,edtThang, edtNam;
+    private Spinner spnPhuong, spnQuan, spnThanhPho;
+    private Button btnDangKy;
+    private TextView txtDangNhap;
+    private ConstraintLayout conStraintDangNhap;
+    private ProgressDialog progressDialog;
 
-    Spinner spNgay,spThang,spNam,spQuan,spThanhPho;
+
     int lastSelected = -1;
-    ArrayList<Integer>dsNgay,dsThang,dsNam;
-    ArrayAdapter<Integer>adapterNgay,adapterThang,adapterNam;
+    ArrayList<Integer> dsNgay,dsThang,dsNam;
+    ArrayAdapter<Integer> adapterNgay,adapterThang,adapterNam;
     ArrayList<String>dsQuan,dsThanhPho;
     ArrayAdapter<String>adapterQuan,adapterThanhPho;
-
-    private String email_sdt,matkhau;
-    private FirebaseAuth auth;
-    private DatabaseReference mDatabase;
-    private Activity activity;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
-        auth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        addControls();
+        AnhXa();
         addEvents();
+        XuLiDangKy();
+        XuLiDaCoTaiKhoan();
     }
 
-    private void addControls() {
-        txtTen = findViewById(R.id.txtTen);
-        txtEmailSDT = findViewById(R.id.txtSDT);
-        txtMatKhau = findViewById(R.id.txtMatKhau);
-        txtNhapLaiMK = findViewById(R.id.txtXacNhanMatKhau);
-        spNgay = findViewById(R.id.sp_Ngay);
-        spThang = findViewById(R.id.sp_Thang);
-        spNam = findViewById(R.id.sp_Nam);
-        spQuan = findViewById(R.id.sp_Quan);
-        spThanhPho = findViewById(R.id.sp_ThanhPho);
-        dsThanhPho = new ArrayList<>();
-        dsThanhPho.addAll(Arrays.asList(getResources().getStringArray(R.array.arrThanhPho)));
-        adapterThanhPho = new ArrayAdapter<String>(
-                DangKy.this, android.R.layout.simple_spinner_item, dsThanhPho
-        );
-        adapterThanhPho.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spThanhPho.setAdapter(adapterThanhPho);
+    private void XuLiDaCoTaiKhoan() {
+        conStraintDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DangKy.this, DangNhap.class);
+                startActivity(intent);
+            }
+        });
+    }
 
-        rdoPhongKham = findViewById(R.id.rdoPhongKham);
-        rdoKhachHang = findViewById(R.id.rdoPhongKham);
-        btnDangKy = findViewById(R.id.btnDangKy);
+    private void XuLiDangKy() {
+        btnDangKy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(edtMatKhau1.getText().toString().equals(edtMatKhau2.getText().toString()) == false){
+                    Toast.makeText(DangKy.this, "Hai mật khẩu không trùng nhau.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(edtMatKhau1.getText().toString().equals(edtMatKhau2.getText().toString())) {
+                    clickDangKy();
+                }
+            }
+        });
+
+    }
+
+    private void clickDangKy() {
+        String strEmail = edtEmailHoacSdt.getText().toString().trim();
+        String strMatKhau = edtMatKhau1.getText().toString().trim();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        progressDialog.show();
+        auth.createUserWithEmailAndPassword(strEmail, strMatKhau)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Intent intent = new Intent(DangKy.this, DangNhap.class);
+                            startActivity(intent);
+                            finishAffinity();
+                        } else {
+
+                            Toast.makeText(DangKy.this, "Đăng ký không thành công.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
     }
 
     private void addEvents() {
-        spThanhPho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spnThanhPho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position)
@@ -100,10 +117,26 @@ public class DangKy extends AppCompatActivity {
                         HienThiQuanHuyen(R.array.quanAnGiang);
                         break;
                     }
+                    case 1:
+                    {
+                        HienThiQuanHuyen(R.array.quanBaRiaVungTau);
+                        break;
+                    }
+                    case 2:
+                    {
+                        HienThiQuanHuyen(R.array.quanBacGiang);
+                        break;
+                    }
 
                     case 14:
                     {
                         HienThiQuanHuyen(R.array.quanDaNang);
+                        break;
+                    }
+
+                    case 55:
+                    {
+                        HienThiQuanHuyen(R.array.quanTTHue);
                         break;
                     }
                     default:
@@ -112,7 +145,7 @@ public class DangKy extends AppCompatActivity {
 
                 }
                 lastSelected = position;
-                spQuan.setAdapter(adapterQuan);
+                spnQuan.setAdapter(adapterQuan);
             }
 
             @Override
@@ -120,12 +153,7 @@ public class DangKy extends AppCompatActivity {
 
             }
         });
-        btnDangKy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                xuLyDangKy();
-            }
-        });
+
     }
 
     private void HienThiQuanHuyen(int position) {
@@ -135,62 +163,30 @@ public class DangKy extends AppCompatActivity {
                 DangKy.this, android.R.layout.simple_spinner_item, dsQuan);
     }
 
-    private void xuLyDangKy() {
-        if (checkInput()==false)
-        {
-            try
-            {
-                auth.createUserWithEmailAndPassword(email_sdt,matkhau)
-                        .addOnCompleteListener(DangKy.this,new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(DangKy.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(DangKy.this,DangNhap.class));
-                            finish();
-                        }
-                        else Toast.makeText(DangKy.this, "Lỗi đăng ký tài khoản", Toast.LENGTH_LONG).show();
-                    }
-                });
 
-            }
-            catch (Exception ex)
-            {
-                Log.e("Lỗi đăng ký tài khoản",ex.toString());
-                Toast.makeText(DangKy.this, "Lỗi đăng ký tài khoản", Toast.LENGTH_LONG).show();
-            }
-        }
-        else Toast.makeText(DangKy.this, "Hãy hoàn thành thông tin đăng ký", Toast.LENGTH_LONG).show();
-    }
+    private void AnhXa() {
+        edtEmailHoacSdt = findViewById(R.id.edtEmailHoacSdt);
+        edtTen = findViewById(R.id.edtTen);
+        edtMatKhau1 = findViewById(R.id.edtMatKhau1);
+        edtMatKhau2 = findViewById(R.id.edtMatKhau2);
+        btnDangKy = findViewById(R.id.btnDangKy);
+        txtDangNhap = findViewById(R.id.txtDangNhap);
+        conStraintDangNhap = findViewById(R.id.layoutDangNhap);
+        progressDialog = new ProgressDialog(this);
 
-    private boolean checkInput() {
-        //kiểm tra dữ liệu nhập vào
-        CheckData.isEmpty(txtTen);
-        CheckData.isEmpty(txtEmailSDT);
-        if(CheckData.isEmpty(txtMatKhau))
-        {
-            email_sdt = txtEmailSDT.getText().toString().trim();
-            matkhau = txtMatKhau.getText().toString().trim();
-            if(matkhau.length()<6)
-            {
-                txtMatKhau.requestFocus();
-                txtMatKhau.setError("Mật khẩu quá ngắn");
-                return true;
-            }
-        }
-        else if(CheckData.isEmpty(txtNhapLaiMK))
-        {
-            if(txtNhapLaiMK.equals(txtMatKhau)==false) {
-                txtNhapLaiMK.requestFocus();
-                txtNhapLaiMK.setError("Mật khẩu không giống");
-            }
-        }
-        return false;
-    }
-
-    public void addNewAccount(String email)
-    {
+        edtNgay = findViewById(R.id.edtNgay);
+        edtThang = findViewById(R.id.edtNam);
+        edtNam = findViewById(R.id.edtNam);
+        spnPhuong = findViewById(R.id.spnPhuong);
+        spnQuan = findViewById(R.id.spnQuan);
+        spnThanhPho = findViewById(R.id.spnThanhPho);
+        dsThanhPho = new ArrayList<>();
+        dsThanhPho.addAll(Arrays.asList(getResources().getStringArray(R.array.arrThanhPho)));
+        adapterThanhPho = new ArrayAdapter<String>(
+                DangKy.this, android.R.layout.simple_spinner_item, dsThanhPho
+        );
+        adapterThanhPho.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnThanhPho.setAdapter(adapterThanhPho);
 
     }
 

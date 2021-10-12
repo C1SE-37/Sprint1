@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="#A1C4FD"
     android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
     tools:context=".DangNhap">
 
     <ImageView
@@ -26,53 +28,44 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edtEmailSoDienThoai"
-        android:layout_width="380dp"
+        android:id="@+id/edtEmailHoacSdt"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_edittext"
-        android:ems="10"
-        android:hint="    Email hoặc số điện thoại"
+        android:hint=" Email "
         android:inputType="textEmailAddress"
         android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/edtMatKhau"
-        android:layout_width="380dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_edittext"
         android:ems="10"
-        android:hint="    Mật khẩu"
+        android:hint="  Mật khẩu"
         android:inputType="textPassword"
         android:minHeight="48dp" />
-
-    <RadioButton
-        android:id="@+id/rdbtnGhiNhoMatKhau"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:minHeight="48dp"
-        android:text="Ghi nhớ mật khẩu" />
 
     <Button
         android:id="@+id/btnDangNhap"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/custom_edittext1"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/custom_button"
         android:backgroundTint="#6490E4"
         android:text="Đăng Nhập"
         android:textAllCaps="false"
         app:cornerRadius="20dp" />
 
     <TextView
-        android:id="@+id/tvQuenMatKhau"
+        android:id="@+id/txtQuenMK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -80,15 +73,36 @@
         android:text="Quên Mật Khẩu?"
         android:textSize="17dp" />
 
-    <TextView
-        android:id="@+id/tvDangKy"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutDangNhap"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Bạn Chưa có tài Khoản? Đăng Ký"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        android:layout_marginTop="12dp">
 
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Bạn chưa có tài khoản?"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtDangNhap"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="72dp"
+            android:text="Đăng Ký"
+            android:textColor="#445DDF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

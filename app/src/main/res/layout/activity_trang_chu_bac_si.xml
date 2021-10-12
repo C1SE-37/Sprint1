@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TrangChuBenhNhan">
+    tools:context=".TrangChuBacSi">
 
     <View
         android:id="@+id/view"
@@ -13,6 +13,7 @@
         android:layout_height="250px"
         android:background="#A1C4FD"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +29,7 @@
         android:text="Trang Chủ"
         android:textSize="70px"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -56,9 +57,9 @@
         android:id="@+id/tv_booking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="12dp"
-        android:text="Lịch Khám"
+        android:text="Đặt phòng"
         android:textSize="60px"
         app:layout_constraintStart_toStartOf="parent"
 
