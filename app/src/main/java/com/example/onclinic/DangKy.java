@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.sqlhelper.CheckData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,19 +31,21 @@ import java.util.Arrays;
 
 public class DangKy extends AppCompatActivity {
 
-    private EditText edtEmailHoacSdt, edtTen,edtMatKhau1, edtMatKhau2,edtNgay,edtThang, edtNam;
-    private Spinner spnPhuong, spnQuan, spnThanhPho;
+    private EditText edtEmailHoacSdt, edtTen,edtMatKhau, edtNLMatKhau,edtNgay,edtThang, edtNam;
+    private Spinner spnQuan, spnThanhPho;
     private Button btnDangKy;
     private TextView txtDangNhap;
-    private ConstraintLayout conStraintDangNhap;
+    //private ConstraintLayout conStraintDangNhap;
     private ProgressDialog progressDialog;
-
 
     int lastSelected = -1;
     ArrayList<Integer> dsNgay,dsThang,dsNam;
     ArrayAdapter<Integer> adapterNgay,adapterThang,adapterNam;
     ArrayList<String>dsQuan,dsThanhPho;
     ArrayAdapter<String>adapterQuan,adapterThanhPho;
+    FirebaseAuth auth;
+    private String email,matkhau;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,40 +53,11 @@ public class DangKy extends AppCompatActivity {
 
         AnhXa();
         addEvents();
-        XuLiDangKy();
-        XuLiDaCoTaiKhoan();
-    }
-
-    private void XuLiDaCoTaiKhoan() {
-        conStraintDangNhap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DangKy.this, DangNhap.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void XuLiDangKy() {
-        btnDangKy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(edtMatKhau1.getText().toString().equals(edtMatKhau2.getText().toString()) == false){
-                    Toast.makeText(DangKy.this, "Hai mật khẩu không trùng nhau.",
-                            Toast.LENGTH_SHORT).show();
-                }
-                else if(edtMatKhau1.getText().toString().equals(edtMatKhau2.getText().toString())) {
-                    clickDangKy();
-                }
-            }
-        });
-
     }
 
     private void clickDangKy() {
         String strEmail = edtEmailHoacSdt.getText().toString().trim();
-        String strMatKhau = edtMatKhau1.getText().toString().trim();
+        String strMatKhau = edtMatKhau.getText().toString().trim();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         progressDialog.show();
         auth.createUserWithEmailAndPassword(strEmail, strMatKhau)
@@ -153,7 +127,72 @@ public class DangKy extends AppCompatActivity {
 
             }
         });
+        txtDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DangKy.this, DangNhap.class);
+                startActivity(intent);
+            }
+        });
+        btnDangKy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                xuLyDangKy();
+            }
+        });
+    }
 
+    private void xuLyDangKy() {
+        if (checkInput()==false)
+        {
+            try
+            {
+                auth.createUserWithEmailAndPassword(email,matkhau)
+                        .addOnCompleteListener(DangKy.this,new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful())
+                                {
+                                    Toast.makeText(DangKy.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(DangKy.this,DangNhap.class));
+                                    finish();
+                                }
+                                else Toast.makeText(DangKy.this, "Lỗi đăng ký tài khoản", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+            }
+            catch (Exception ex)
+            {
+                Toast.makeText(DangKy.this, "Lỗi đăng ký tài khoản", Toast.LENGTH_LONG).show();
+            }
+        }
+        else Toast.makeText(DangKy.this, "Hãy hoàn thành thông tin đăng ký", Toast.LENGTH_LONG).show();
+    }
+
+    private boolean checkInput() {
+        //kiểm tra dữ liệu nhập vào
+        CheckData.isEmpty(edtTen);
+        CheckData.isEmpty(edtEmailHoacSdt);
+        if(CheckData.isEmpty(edtMatKhau))
+        {
+            email = edtEmailHoacSdt.getText().toString().trim();
+            matkhau = edtMatKhau.getText().toString().trim();
+            if(matkhau.length()<6)
+            {
+                edtMatKhau.requestFocus();
+                edtMatKhau.setError("Mật khẩu quá ngắn");
+                return true;
+            }
+        }
+        else if(CheckData.isEmpty(edtNLMatKhau))
+        {
+            if(edtNLMatKhau.equals(edtMatKhau)==false) {
+                edtNLMatKhau.requestFocus();
+                edtNLMatKhau.setError("Mật khẩu không giống");
+            }
+        }
+        return false;
     }
 
     private void HienThiQuanHuyen(int position) {
@@ -163,21 +202,18 @@ public class DangKy extends AppCompatActivity {
                 DangKy.this, android.R.layout.simple_spinner_item, dsQuan);
     }
 
-
     private void AnhXa() {
         edtEmailHoacSdt = findViewById(R.id.edtEmailHoacSdt);
         edtTen = findViewById(R.id.edtTen);
-        edtMatKhau1 = findViewById(R.id.edtMatKhau1);
-        edtMatKhau2 = findViewById(R.id.edtMatKhau2);
+        edtMatKhau = findViewById(R.id.edtMatKhau);
+        edtNLMatKhau = findViewById(R.id.edtNLMatKhau);
         btnDangKy = findViewById(R.id.btnDangKy);
         txtDangNhap = findViewById(R.id.txtDangNhap);
-        conStraintDangNhap = findViewById(R.id.layoutDangNhap);
         progressDialog = new ProgressDialog(this);
 
         edtNgay = findViewById(R.id.edtNgay);
-        edtThang = findViewById(R.id.edtNam);
+        edtThang = findViewById(R.id.edtThang);
         edtNam = findViewById(R.id.edtNam);
-        spnPhuong = findViewById(R.id.spnPhuong);
         spnQuan = findViewById(R.id.spnQuan);
         spnThanhPho = findViewById(R.id.spnThanhPho);
         dsThanhPho = new ArrayList<>();
@@ -187,7 +223,5 @@ public class DangKy extends AppCompatActivity {
         );
         adapterThanhPho.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnThanhPho.setAdapter(adapterThanhPho);
-
     }
-
 }

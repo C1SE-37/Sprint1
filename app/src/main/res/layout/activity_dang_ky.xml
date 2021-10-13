@@ -1,99 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A1C4FD"
-    android:orientation="vertical"
-    android:paddingLeft="25dp"
-    android:paddingRight="25dp"
-    tools:context=".DangKy">
+    android:background="#A1C4FD">
 
     <ImageView
         android:id="@+id/imgvlogo"
-        android:layout_width="match_parent"
-        android:layout_height="179dp"
-        android:paddingTop="-90dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtChaoMung"
+        app:layout_constraintDimensionRatio="1:0.5"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtChaoMung"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/dancing_script_bold"
         android:gravity="center"
-
         android:text="Chào mừng thành viên mới!"
-        tools:textSize="30dp" />
+        app:layout_constraintBottom_toTopOf="@+id/edtEmailHoacSdt"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/imgvlogo"
+        android:textStyle="bold"
+        tools:textSize="25dp" />
 
     <EditText
         android:id="@+id/edtEmailHoacSdt"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:background="@drawable/custom_edittext"
-        android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress|textEmailSubject"
-        android:minHeight="24dp"
-        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtTen"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtChaoMung"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/edtTen"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:background="@drawable/custom_edittext"
-        android:ems="10"
         android:hint="Nhập tên của bạn"
         android:inputType="textPersonName"
-        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtMatKhau"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmailHoacSdt"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/edtMatKhau1"
-        android:layout_width="wrap_content"
+        android:id="@+id/edtMatKhau"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:background="@drawable/custom_edittext"
-        android:ems="10"
-        android:hint="Nhập Mật Khẩu"
+        android:hint="Nhập mật khẩu"
         android:inputType="textPersonName|textPassword"
-        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtNLMatKhau"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/edtTen"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/edtMatKhau2"
-        android:layout_width="wrap_content"
+        android:id="@+id/edtNLMatKhau"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:background="@drawable/custom_edittext"
-        android:ems="10"
-        android:hint="Nhập Mật Khẩu"
+        android:hint="Nhập lại mật khẩu"
         android:inputType="textPassword"
-        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtNgaySinh"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/edtMatKhau"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/txtNgaySinh"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:text="Ngày Sinh"
-        android:textSize="18dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/edtNLMatKhau" />
 
     <LinearLayout
-        android:layout_width="350dp"
+        android:id="@+id/linearLayout1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/txtNgaySinh">
 
         <EditText
             android:id="@+id/edtNgay"
@@ -101,13 +119,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/custom_edittext"
-            android:ems="10"
             android:hint="Ngày"
             android:inputType="date|datetime"
-            android:minHeight="23dp"
-            android:textSize="17dp"
-            tools:ignore="TouchTargetSizeCheck"
-            android:layout_marginRight="10dp"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/edtThang"
@@ -115,14 +129,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/custom_edittext"
-            android:ems="10"
             android:hint="Tháng"
             android:inputType="date|datetime"
-            android:minHeight="23dp"
-            android:textSize="17dp"
-            tools:ignore="TouchTargetSizeCheck"
-            android:layout_marginRight="10dp"
-            />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/edtNam"
@@ -130,38 +139,39 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/custom_edittext"
-            android:ems="10"
             android:hint="Năm"
             android:inputType="date|datetime"
-            android:minHeight="23dp"
-            android:textSize="17dp"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:text="Địa chỉ"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
 
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintBottom_toTopOf="@+id/btnDangKy"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
         <Spinner
             android:id="@+id/spnThanhPho"
-            android:layout_width="95dp"
-            android:layout_height="34dp"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/custom_spinner"
             android:spinnerMode="dialog"
@@ -169,16 +179,7 @@
 
         <Spinner
             android:id="@+id/spnQuan"
-            android:layout_width="95dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_spinner"
-            android:spinnerMode="dialog"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-        <Spinner
-            android:id="@+id/spnPhuong"
-            android:layout_width="95dp"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
@@ -193,43 +194,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/custom_corner"
         android:backgroundTint="#6490E4"
         android:text="Đăng Ký"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        android:textAllCaps="false" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutDangNhap"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/btnDangKy">
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:text="Bạn đã có tài khoản?"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/txtDangNhap"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/txtDangNhap" />
 
         <TextView
             android:id="@+id/txtDangNhap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="72dp"
             android:text="Đăng Nhập"
             android:textColor="#445DDF"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textStyle="bold" />
+    </LinearLayout>
 
-</LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

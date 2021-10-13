@@ -9,14 +9,23 @@
         <entry key="..\:/AndroidProject/CapstoneProject/Project/OnClinic/app/src/main/res/layout/activity_dang_ky.xml" value="0.264" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/OnClinic/app/src/main/res/layout/activity_dang_nhap.xml" value="0.2" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/OnClinic/app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.24427083333333333" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/drawable/custom_button.xml" value="0.26458333333333334" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/drawable/custom_corner.xml" value="0.12407407407407407" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/drawable/custom_edittext.xml" value="0.11666666666666667" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/drawable/custom_edittext1.xml" value="0.11666666666666667" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/drawable/custom_spinner.xml" value="0.1" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/drawable/roundedbutton.xml" value="0.11666666666666667" />
-        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_dang_ky.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_dang_nhap.xml" value="0.24322916666666666" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout-sw320dp/activity_dangky.xml" value="0.2" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout-sw320dp/dangky_activity.xml" value="0.264" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout-sw480dp/dangky_activity.xml" value="0.4" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_dang_ky.xml" value="0.264" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_dang_nhap.xml" value="0.264" />
         <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.24322916666666666" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_test.xml" value="0.24427083333333333" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_trang_chu_bac_si.xml" value="0.264" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/activity_trang_chu_benh_nhan.xml" value="0.24427083333333333" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/dangky_activity.xml" value="0.264" />
+        <entry key="..\:/AndroidProject/CapstoneProject/Project/Sprint1/app/src/main/res/layout/loichao.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/drawable/custom_button.xml" value="0.15555555555555556" />
         <entry key="app/src/main/res/drawable/custom_button_f.xml" value="0.3260416666666667" />
         <entry key="app/src/main/res/drawable/custom_corner.xml" value="0.22666666666666666" />
