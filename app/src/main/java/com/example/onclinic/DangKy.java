@@ -78,7 +78,6 @@ public class DangKy extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void clickDangKy() {
@@ -97,10 +96,8 @@ public class DangKy extends AppCompatActivity {
                             startActivity(intent);
                             finishAffinity();
                         } else {
-
                             Toast.makeText(DangKy.this, "Đăng ký không thành công.",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
