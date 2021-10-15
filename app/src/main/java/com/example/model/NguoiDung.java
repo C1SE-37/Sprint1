@@ -1,10 +1,11 @@
 package com.example.model;
 
+import java.util.Date;
+
 public class NguoiDung {
     private String tenNguoiDung;
-    private int ngay,thang,nam;
+    private Date ngaySinh;
     private String quan,thanhpho;
-
 
 
     @Override

@@ -24,7 +24,7 @@ public class DangNhap extends AppCompatActivity {
     private Button btnDangNhap;
     private TextView txtQuenMk;
 
-    private ConstraintLayout layoutDangNhap;
+    private TextView txtDangNhap;
     private ProgressDialog progressDialog;
 
     @Override
@@ -39,7 +39,7 @@ public class DangNhap extends AppCompatActivity {
     }
 
     private void xuLyDangKy() {
-        layoutDangNhap.setOnClickListener(new View.OnClickListener() {
+        txtDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DangNhap.this, DangKy.class);
@@ -97,7 +97,7 @@ public class DangNhap extends AppCompatActivity {
         btnDangNhap = findViewById(R.id.btnDangNhap);
         txtQuenMk = findViewById(R.id.txtQuenMK);
 
-        layoutDangNhap = findViewById(R.id.layoutDangNhap);
+        txtDangNhap = findViewById(R.id.txtDangNhap);
         progressDialog = new ProgressDialog(this);
     }
 }

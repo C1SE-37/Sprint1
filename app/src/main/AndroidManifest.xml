@@ -15,9 +15,16 @@
         <activity
             android:name=".DangNhap"
             android:exported="true" />
+
         <activity
             android:name=".DangKy"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".TrangChuBenhNhan"
             android:exported="true" />
@@ -26,13 +33,7 @@
             android:exported="true" />
         <activity
             android:name=".LoiChao"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
