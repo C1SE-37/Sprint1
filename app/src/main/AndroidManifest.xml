@@ -10,12 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".DatPhong"
+            android:exported="true" />
+        <activity
             android:name=".TrangChuBacSi"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DangNhap"
             android:exported="true" />
-
         <activity
             android:name=".DangKy"
             android:exported="true">
@@ -33,8 +35,7 @@
             android:exported="true" />
         <activity
             android:name=".LoiChao"
-            android:exported="true" />
-
+            android:exported="true"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

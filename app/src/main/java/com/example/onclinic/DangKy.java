@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 import com.example.model.TaiKhoan;
 import com.example.sqlhelper.CheckData;
 import com.example.sqlhelper.NoteFireBase;
+import com.example.sqlhelper.CheckData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -55,7 +57,7 @@ public class DangKy extends AppCompatActivity {
     ArrayAdapter<Integer> adapterNgay,adapterThang,adapterNam;
     ArrayList<String>dsQuan,dsThanhPho;
     ArrayAdapter<String>adapterQuan,adapterThanhPho;
-    //private FirebaseAuth auth;
+    private FirebaseAuth auth;
     private DatabaseReference mDatabase;
     private String email,matkhau;
 
@@ -63,12 +65,12 @@ public class DangKy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
-
+        auth = FirebaseAuth.getInstance();
         AnhXa();
         addEvents();
     }
-
     /*private void clickDangKy() {
+    private void clickDangKy() {
         String strEmail = edtEmailHoacSdt.getText().toString().trim();
         String strMatKhau = edtMatKhau.getText().toString().trim();
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -167,7 +169,7 @@ public class DangKy extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog dialog = new DatePickerDialog(this,
-                android.R.style.Theme_Holo_Light,
+                android.R.style.Theme_Holo_Light_Dialog,
                 dateSetListener,
                 year,month,day);
         //làm mờ màn hình chính sau khi hiện calendar
@@ -189,11 +191,11 @@ public class DangKy extends AppCompatActivity {
         {
             try
             {
-                FirebaseAuth auth = FirebaseAuth.getInstance();
                 auth.createUserWithEmailAndPassword(email,matkhau)
-                        .addOnCompleteListener(DangKy.this,new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                Log.d("FirebaseAuth", "onComplete" + task.getException().getMessage());
                                 if(task.isSuccessful())
                                 {
                                     duaDuLieuLenFireBase();
@@ -204,7 +206,6 @@ public class DangKy extends AppCompatActivity {
                                 else Toast.makeText(DangKy.this, "Lỗi đăng ký", Toast.LENGTH_LONG).show();
                             }
                         });
-
             }
             catch (Exception ex)
             {
@@ -261,6 +262,7 @@ public class DangKy extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         txtNgaySinh = findViewById(R.id.txtNgaySinh);
         imgNgaySinh = findViewById(R.id.imgNgaySinh);
+
         spnQuan = findViewById(R.id.spnQuan);
         spnThanhPho = findViewById(R.id.spnThanhPho);
         dsThanhPho = new ArrayList<>();
