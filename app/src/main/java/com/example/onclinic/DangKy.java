@@ -89,7 +89,6 @@ public class DangKy extends AppCompatActivity {
 
                             Toast.makeText(DangKy.this, "Đăng ký không thành công.",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
@@ -131,7 +130,6 @@ public class DangKy extends AppCompatActivity {
                     default:
                         adapterQuan = null;
                         break;
-
                 }
                 lastSelected = position;
                 spnQuan.setAdapter(adapterQuan);
